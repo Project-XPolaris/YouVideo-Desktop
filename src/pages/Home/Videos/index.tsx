@@ -4,12 +4,13 @@ import useStyles from './style'
 import VideoItem from '../../../components/VideoItem'
 import useHomeVideoListModel from './model'
 import { getImageUrl } from '../../../utils/image'
+import { VideoFile } from '../../../api/video'
 
 export interface HomeVideosPagePropsType {
 
 }
 
-const HomeVideosPage = ({}: HomeVideosPagePropsType):React.ReactElement => {
+const HomeVideosPage = ({}: HomeVideosPagePropsType): React.ReactElement => {
   const classes = useStyles()
   const model = useHomeVideoListModel()
   useEffect(() => {
@@ -24,9 +25,16 @@ const HomeVideosPage = ({}: HomeVideosPagePropsType):React.ReactElement => {
       </div>
       <div className={classes.content}>
         {
-          model.videoList.map(video => (
-            <VideoItem key={video.id} className={classes.item} title={video.name} coverUrl={getImageUrl(video.cover)} />
-          ))
+          model.videoList.map(video => {
+            let file: VideoFile | undefined
+            if (video.files?.length !== 0) {
+              file = video.files[0]
+              return (
+                <VideoItem key={video.id} className={classes.item} title={video.name}
+                  coverUrl={getImageUrl(file?.cover)} />
+              )
+            }
+          })
         }
       </div>
     </div>

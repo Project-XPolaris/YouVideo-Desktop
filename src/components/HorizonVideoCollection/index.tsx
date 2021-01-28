@@ -2,7 +2,7 @@ import React from 'react'
 import VideoItem from '../VideoItem'
 import useStyles from './style'
 import clsx from 'clsx'
-import { Video } from '../../api/video'
+import { Video, VideoFile } from '../../api/video'
 import { getImageUrl } from '../../utils/image'
 
 export interface HorizonVideoCollectionPropsType {
@@ -20,9 +20,15 @@ const HorizonVideoCollection = ({ className, videos = [] }: HorizonVideoCollecti
         </div>
       </div>
       <div className={classes.collection}>
-        {videos.map(video => (
-          <VideoItem key={video.id} className={classes.item} title={video.name} coverUrl={getImageUrl(video.cover)} />
-        ))}
+        {videos.map(video => {
+          let file : VideoFile | undefined
+          if (video.files?.length !== 0) {
+            file = video.files[0]
+          }
+          return (
+            <VideoItem key={video.id} className={classes.item} title={video.name} coverUrl={getImageUrl(file?.cover)} />
+          )
+        })}
       </div>
     </div>
   )
