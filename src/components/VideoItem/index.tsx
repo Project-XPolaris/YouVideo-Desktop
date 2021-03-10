@@ -9,13 +9,14 @@ export interface VideoItemPropsType {
   className?: any
   coverUrl?: string
   title:string
+  onClick?:() => void
 }
 
-const VideoItem = ({ className, coverUrl, title }: VideoItemPropsType): React.ReactElement => {
+const VideoItem = ({ className, coverUrl, title, onClick }: VideoItemPropsType): React.ReactElement => {
   const classes = useStyles()
   return (
     <div className={clsx(classes.root, className)}>
-      <ButtonBase className={classes.coverBase}>
+      <ButtonBase className={classes.coverBase} onClick={onClick}>
         {
           coverUrl === undefined
             ? (

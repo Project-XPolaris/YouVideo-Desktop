@@ -1,20 +1,28 @@
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import useStyles from './style'
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
-import { HomeLayout } from '../HomeLayout'
 import useLayoutModel from '../../models/layout'
-import { ArrowBack, Remove } from '@material-ui/icons'
+import { ArrowBack } from '@material-ui/icons'
 import MinimizeSharpIcon from '@material-ui/icons/MinimizeSharp'
 import CheckBoxOutlineBlankSharpIcon from '@material-ui/icons/CheckBoxOutlineBlankSharp'
 import ClearSharpIcon from '@material-ui/icons/ClearSharp'
 import { electronApp, electronRemote, isElectron } from '../../remote'
 import React from 'react'
 import { TaskManager } from '../../parts/Task'
+import { useHistory } from 'react-router-dom'
+import { ApplicationConfig } from '../../config';
 
-const BaseLayout = (): React.ReactElement => {
+const BaseLayout = ({ children }:{children:any}): React.ReactElement => {
   const classes = useStyles()
   const layoutModel = useLayoutModel()
+  const routerHistory = useHistory()
+  // init
+  if (routerHistory.location.pathname !== '/start') {
+    const apiUrl = localStorage.getItem(ApplicationConfig.storeKey.apiUrl)
+    if (apiUrl === null) {
+      routerHistory.push('/start')
+    }
+  }
   const NavIcon = () => {
     switch (layoutModel.navIcon) {
       case 'Menu':
@@ -83,15 +91,7 @@ const BaseLayout = (): React.ReactElement => {
           </Toolbar>
         </AppBar>
         <div className={classes.main}>
-          <Router>
-            <Switch>
-              <Route path='/home'>
-                <div className={classes.content}>
-                  <HomeLayout />
-                </div>
-              </Route>
-            </Switch>
-          </Router>
+          {children}
         </div>
       </div>
     </>

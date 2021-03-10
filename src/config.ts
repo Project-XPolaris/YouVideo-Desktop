@@ -1,11 +1,16 @@
 export const ApplicationConfig = {
-  apiUrl: 'http://localhost:7700',
   apiPaths: {
     libraryList: '/library',
     library: '/library/:id',
     scanLibrary: '/library/:id/scan',
     videoList: '/videos',
+    video: '/video/:id',
     readPath: '/files',
-    tasks: '/task'
+    tasks: '/task',
+    tags: '/tag',
+    videoTags: '/tag'
+  },
+  storeKey: {
+    apiUrl: 'apiUrl'
   }
 }

@@ -28,3 +28,7 @@ export const fetchVideoList = ({ page = 1, pageSize = 20 }:{ page?:number, pageS
     }
   })
 }
+
+export const fetchVideo = (videoId :number):Promise<Video> => {
+  return apiRequest.get(ApplicationConfig.apiPaths.video.replace(':id', videoId.toString()))
+}

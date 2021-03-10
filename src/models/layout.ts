@@ -2,10 +2,9 @@ import { createModel } from 'hox'
 import { useState } from 'react'
 export type TabIndex = 'Home' | 'Library' | 'Videos'
 export type NavIcon = 'Menu' | 'Back'
-export type DialogKey = 'library/pickDirectory'
+export type DialogKey = 'library/pickDirectory' | 'video/addTags'
 const LayoutModel = () => {
   const [activeIndex, setActiveIndex] = useState<TabIndex>('Home')
-  const [playlistDrawerOpen, setPlaylistDrawerOpen] = useState<boolean>(false)
   const [navIcon, setNavIcon] = useState<NavIcon>('Menu')
   const [dialogs, setDialogs] = useState< { [key:string]:boolean }>({})
   const switchDialog = (dialogKey:DialogKey) => {
@@ -15,18 +14,17 @@ const LayoutModel = () => {
     newDialog[dialogKey] = !newDialog[dialogKey]
     setDialogs(newDialog)
   }
-  const switchPlaylistDrawer = () => {
-    setPlaylistDrawerOpen(!playlistDrawerOpen)
+  const getDialogOpen = (dialogKey:DialogKey) => {
+    return Boolean(dialogs[dialogKey])
   }
   return {
     setActiveIndex,
     activeIndex,
-    playlistDrawerOpen,
-    switchPlaylistDrawer,
     navIcon,
     setNavIcon,
     switchDialog,
-    dialogs
+    dialogs,
+    getDialogOpen
   }
 }
 const useLayoutModel = createModel(LayoutModel)

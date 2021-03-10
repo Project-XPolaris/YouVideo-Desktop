@@ -5,12 +5,16 @@ import {
   Route,
 } from 'react-router-dom'
 import HomePage from '../../pages/Home'
+import VideoDetailPage from '../../pages/VideoDetail';
 const RouterLayout = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <HomePage />
+        </Route>
+        <Route path="/video" >
+          <VideoDetailPage />
         </Route>
       </Switch>
     </Router>

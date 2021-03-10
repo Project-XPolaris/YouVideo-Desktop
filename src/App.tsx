@@ -1,25 +1,27 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { GlobalStyle } from './styles/GlobalStyle'
-import BaseLayout from './layout/BaseLayout'
-import appTheme from './theme'
-import { ThemeProvider } from '@material-ui/core'
-import { useTitle } from 'ahooks'
+import React from 'react';
+import { render } from 'react-dom';
+import { GlobalStyle } from './styles/GlobalStyle';
+import BaseLayout from './layout/BaseLayout';
+import appTheme from './theme';
+import { ThemeProvider } from '@material-ui/core';
+import { useTitle } from 'ahooks';
+import InitLayout from './layout/InitLayout';
+import BlankLayout from './layout/BlankLayout';
 
-const mainElement = document.createElement('div')
-mainElement.setAttribute('id', 'root')
-document.body.appendChild(mainElement)
+const mainElement = document.createElement('div');
+mainElement.setAttribute('id', 'root');
+document.body.appendChild(mainElement);
 
 const App = () => {
-  useTitle('YouMusic')
+  useTitle('YouMusic');
   return (
     <>
       <ThemeProvider theme={appTheme}>
         <GlobalStyle />
-        <BaseLayout />
+        <BlankLayout />
       </ThemeProvider>
     </>
-  )
-}
+  );
+};
 
-render(<App />, mainElement)
+render(<App />, mainElement);
