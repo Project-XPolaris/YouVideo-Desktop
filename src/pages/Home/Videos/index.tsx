@@ -16,8 +16,9 @@ const HomeVideosPage = ({}: HomeVideosPagePropsType): React.ReactElement => {
   const history = useHistory()
   const model = useHomeVideoListModel()
   useEffect(() => {
-    model.loadVideo()
+    model.loadVideo({})
   }, [])
+  console.log(model.pagination)
   return (
     <div className={classes.root}>
       <div className={classes.header}>
@@ -26,24 +27,31 @@ const HomeVideosPage = ({}: HomeVideosPagePropsType): React.ReactElement => {
         </Typography>
       </div>
       <div className={classes.content}>
-        {
-          model.videoList.map(video => {
-            let file: VideoFile | undefined
-            if (video.files?.length !== 0) {
-              file = video.files[0]
-              return (
-                <VideoItem
-                  key={video.id}
-                  className={classes.item}
-                  title={video.name}
-                  coverUrl={getImageUrl(file?.cover)}
-                  onClick={() => history.push(`/video/${video.id}`)}
-                />
-              )
-            }
-          })
-        }
-        <Pagination count={model.pagination.pageCount} />
+        <div className={classes.list}>
+          {
+            model.videoList.map(video => {
+              let file: VideoFile | undefined
+              if (video.files?.length !== 0) {
+                file = video.files[0]
+                return (
+                  <VideoItem
+                    key={video.id}
+                    className={classes.item}
+                    title={video.name}
+                    coverUrl={getImageUrl(file?.cover)}
+                    onClick={() => history.push(`/video/${video.id}`)}
+                    coverHeight={96}
+                  />
+                )
+              }
+            })
+          }
+        </div>
+        <Pagination
+          count={model.pagination.pageCount}
+          onChange={(_, page) => model.loadVideo({ page })}
+          page={model.pagination.page}
+        />
       </div>
     </div>
   )

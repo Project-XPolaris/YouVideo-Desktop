@@ -27,6 +27,7 @@ const AddTagDialog = ({ onOk, onCancel, open = false }: AddTagDialogPropsType):R
   const [options, setOptions] = useState<Tag[] | undefined>()
   const [selected, setSelected] = useState<string[]>([])
   const onDialogOk = () => {
+    console.log(selected)
     if (selected.length === 0) {
       return
     }

@@ -22,12 +22,15 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     content: {
       padding: theme.spacing(2),
+    },
+    list:{
       display: 'flex',
       flexWrap: 'wrap'
     },
     item: {
       marginRight: theme.spacing(2),
-      marginBottom: theme.spacing(2)
+      marginBottom: theme.spacing(2),
+      width: theme.spacing(20)
     }
   })
 )

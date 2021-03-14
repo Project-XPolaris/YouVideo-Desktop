@@ -7,7 +7,7 @@ import HomeIcon from '@material-ui/icons/Home'
 import useStyles from './style'
 import useLayoutModel, { TabIndex } from '../../models/layout'
 import { useHistory } from 'react-router-dom'
-import { Folder, LibraryMusic, Videocam } from '@material-ui/icons';
+import { Folder, LibraryMusic, Settings, Videocam } from '@material-ui/icons'
 
 const NavItems: {
   icon: React.ReactElement, title: string, index: TabIndex, path: string
@@ -30,6 +30,12 @@ const NavItems: {
     index: 'Library',
     path: '/home/library'
   },
+  {
+    icon: <Settings />,
+    title: 'Settings',
+    index: 'Settings',
+    path: '/home/setting'
+  }
 ]
 const Nav = () => {
   const classes = useStyles()

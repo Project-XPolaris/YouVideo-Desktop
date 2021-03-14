@@ -1,6 +1,6 @@
 import { createModel } from 'hox'
 import { useState } from 'react'
-export type TabIndex = 'Home' | 'Library' | 'Videos'
+export type TabIndex = 'Home' | 'Library' | 'Videos' | 'Settings'
 export type NavIcon = 'Menu' | 'Back'
 export type DialogKey = 'library/pickDirectory' | 'video/addTags'
 const LayoutModel = () => {

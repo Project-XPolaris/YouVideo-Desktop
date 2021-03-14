@@ -7,6 +7,7 @@ import AddTagDialog from '../../components/AddTagDialog'
 import useLayoutModel from '../../models/layout'
 import { useParams } from 'react-router-dom'
 import useVideoDetailModel from './model'
+import { addVideoTags } from '../../api/tag'
 
 export interface VideoDetailPagePropsType {
 
@@ -24,7 +25,8 @@ const VideoDetailPage = ({}: VideoDetailPagePropsType) => {
     <div className={classes.root}>
       <AddTagDialog
         onCancel={() => layoutModel.switchDialog('video/addTags')}
-        onOk={(values) => {
+        onOk={async (values) => {
+          await videoModel.addTags(values)
           layoutModel.switchDialog('video/addTags')
         }}
         open={layoutModel.getDialogOpen('video/addTags')}

@@ -4,6 +4,7 @@ import VideoDetailPage from '../../pages/VideoDetail'
 import { HomeLayout } from '../HomeLayout'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import BaseLayout from '../BaseLayout'
+import PlayerPage from '../../pages/Player'
 
 export interface BlankLayoutPropsType {
 
@@ -13,6 +14,11 @@ const BlankLayout = ({}: BlankLayoutPropsType) => {
   return (
     <Router>
       <Switch>
+        <Route path="/player" >
+          <BaseLayout>
+            <PlayerPage />
+          </BaseLayout>
+        </Route>
         <Route path="/start" >
           <BaseLayout>
             <StartPage />

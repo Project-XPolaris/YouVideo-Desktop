@@ -83,6 +83,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.15.4",
+    "react-player": "^2.9.0",
     "react-router-dom": "^5.2.0",
     "react-use": "^15.3.4",
     "react-use-audio-player": "^1.2.4",

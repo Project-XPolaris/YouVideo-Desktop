@@ -6,6 +6,8 @@ import useStyles from './style'
 import useLayoutModel from '../../models/layout'
 import HomeLibraryPage from '../../pages/Home/Library';
 import HomeVideosPage from '../../pages/Home/Videos';
+import { Settings } from '@material-ui/icons'
+import SettingPage from '../../pages/Home/Setting'
 
 export const HomeLayout = () => {
   const classes = useStyles()
@@ -21,6 +23,9 @@ export const HomeLayout = () => {
       </div>
       <div className={classes.content}>
         <Switch>
+          <Route path={`${path}/setting`}>
+            <SettingPage />
+          </Route>
           <Route path={`${path}/videos`}>
             <HomeVideosPage />
           </Route>

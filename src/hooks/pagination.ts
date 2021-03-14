@@ -20,7 +20,7 @@ export const usePagination = ({ defaultPage = 1, defaultPageSize = 20 }):Paginat
     })
   }
   return {
-    pageCount: pagination.count / (pagination.page * pagination.pageSize),
+    pageCount: Math.ceil(pagination.count / pagination.pageSize),
     ...pagination,
     update
   }

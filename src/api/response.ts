@@ -4,3 +4,7 @@ export interface ListContainer<T> {
   page:number
   result : T[]
 }
+
+export interface BaseResponse {
+  success: boolean
+}

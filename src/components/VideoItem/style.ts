@@ -3,16 +3,13 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: theme.spacing(30),
       flex: 'none'
     },
     coverBase: {
       width: '100%',
-      height: theme.spacing(20)
     },
     placeHolderContainer: {
       width: '100%',
-      height: theme.spacing(20),
       backgroundColor: theme.palette.primary.main,
       display: 'flex',
       justifyContent: 'center',
@@ -24,7 +21,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     cover: {
       width: '100%',
-      height: theme.spacing(20),
       objectFit: 'cover'
     },
     title: {

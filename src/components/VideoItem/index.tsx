@@ -9,10 +9,11 @@ export interface VideoItemPropsType {
   className?: any
   coverUrl?: string
   title:string
-  onClick?:() => void
+  onClick?:() => void,
+  coverHeight? : number
 }
 
-const VideoItem = ({ className, coverUrl, title, onClick }: VideoItemPropsType): React.ReactElement => {
+const VideoItem = ({ className, coverUrl, title, onClick, coverHeight = 240 }: VideoItemPropsType): React.ReactElement => {
   const classes = useStyles()
   return (
     <div className={clsx(classes.root, className)}>
@@ -20,11 +21,11 @@ const VideoItem = ({ className, coverUrl, title, onClick }: VideoItemPropsType):
         {
           coverUrl === undefined
             ? (
-              <div className={classes.placeHolderContainer}>
+              <div className={classes.placeHolderContainer} style={{ height: coverHeight }}>
                 <Videocam className={classes.placeHolderIcon} />
               </div>
             ) : (
-              <img className={classes.cover} src={coverUrl}/>
+              <img className={classes.cover} src={coverUrl} style={{ height: coverHeight }}/>
             )
         }
       </ButtonBase>

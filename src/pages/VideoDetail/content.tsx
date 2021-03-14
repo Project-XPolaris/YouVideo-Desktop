@@ -14,6 +14,8 @@ import {
 import { Videocam } from '@material-ui/icons'
 import useVideoDetailModel from './model'
 import { getImageUrl } from '../../utils/image'
+import { useHistory } from 'react-router-dom'
+import { ApplicationConfig } from '../../config'
 
 export interface ContentPropsType {
 
@@ -34,14 +36,15 @@ const useStyles = makeStyles((theme: Theme) =>
     cover: {
       width: 240,
       height: 120,
-      backgroundColor: '#EEEEEE'
+      backgroundColor: '#EEEEEE',
+      objectFit: 'cover'
     },
     info: {
       flexGrow: 1,
       marginLeft: theme.spacing(2)
     },
     title: {
-      ...theme.typography.h4,
+      ...theme.typography.h6,
       fontWeight: 300
     },
     divider: {
@@ -66,6 +69,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const Content = ({}: ContentPropsType) => {
   const classes = useStyles()
   const videoModel = useVideoDetailModel()
+  const history = useHistory()
   const getCover = () => {
     if (videoModel.video === undefined || videoModel.video.files.length === 0) {
       return undefined
@@ -91,7 +95,14 @@ const Content = ({}: ContentPropsType) => {
       <div className={classes.tagsContainer}>
         {
           videoModel.tags.map((tag) => {
-            return (<Chip label={tag.name} className={classes.tag} key={tag.id}/>)
+            return (
+              <Chip
+                label={tag.name}
+                className={classes.tag}
+                key={tag.id}
+                onDelete={() => videoModel.removeTag(tag.id)}
+              />
+            )
           })
         }
       </div>
@@ -103,7 +114,9 @@ const Content = ({}: ContentPropsType) => {
         {
           videoModel.video?.files?.map((file) => {
             return (
-              <ListItem button key={file.id}>
+              <ListItem button key={file.id} onClick={() => {
+                history.push(`/player?playurl=${localStorage.getItem(ApplicationConfig.storeKey.apiUrl)}/video/file/${file.id}/stream`)
+              }}>
                 <ListItemAvatar>
                   <Avatar>
                     <Videocam />

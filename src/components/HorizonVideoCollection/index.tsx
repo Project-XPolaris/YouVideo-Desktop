@@ -26,7 +26,7 @@ const HorizonVideoCollection = ({ className, videos = [] }: HorizonVideoCollecti
             file = video.files[0]
           }
           return (
-            <VideoItem key={video.id} className={classes.item} title={video.name} coverUrl={getImageUrl(file?.cover)} />
+            <VideoItem key={video.id} className={classes.item} title={video.name} coverUrl={getImageUrl(file?.cover)} coverHeight={120}/>
           )
         })}
       </div>

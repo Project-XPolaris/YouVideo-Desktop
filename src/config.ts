@@ -8,7 +8,9 @@ export const ApplicationConfig = {
     readPath: '/files',
     tasks: '/task',
     tags: '/tag',
-    videoTags: '/tag'
+    tagsVideo: '/tag/videos',
+    videoTags: '/tag',
+    tagVideos: '/tag/:id/videos'
   },
   storeKey: {
     apiUrl: 'apiUrl'

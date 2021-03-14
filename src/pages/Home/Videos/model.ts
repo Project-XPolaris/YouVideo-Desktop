@@ -6,8 +6,8 @@ import { usePagination } from '../../../hooks/pagination'
 const HomeVideoListModel = () => {
   const [videoList, setVideoList] = useState<Video[]>([])
   const pagination = usePagination({})
-  const loadVideo = async () => {
-    const response = await fetchVideoList({})
+  const loadVideo = async ({ page = pagination.page }:{page?:number}) => {
+    const response = await fetchVideoList({ page })
     setVideoList(response.result)
     pagination.update(response)
   }
