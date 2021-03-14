@@ -6,6 +6,7 @@ import { Add } from '@material-ui/icons'
 import useHomeLibraryModel from './model'
 import PathSelectDialog from '../../../components/PathSelectDialog'
 import useTaskModel from '../../../parts/Task/model'
+import { useHistory } from 'react-router-dom'
 
 export interface HomeLibraryPagePropsType {
 
@@ -13,6 +14,7 @@ export interface HomeLibraryPagePropsType {
 
 const HomeLibraryPage = ({}: HomeLibraryPagePropsType):React.ReactElement => {
   const classes = useStyles()
+  const history = useHistory()
   const model = useHomeLibraryModel()
   const taskModel = useTaskModel()
   const [selectPathOpen, setSelectPathOpen] = useState<boolean>(false)
@@ -56,6 +58,7 @@ const HomeLibraryPage = ({}: HomeLibraryPagePropsType):React.ReactElement => {
                 status={getStatus(library.id)}
                 onScan={() => model.scan(library.id)}
                 onDelete={() => model.remove(library.id)}
+                onClick={() => history.push(`/library/${library.id}`)}
               />
             ))
           }

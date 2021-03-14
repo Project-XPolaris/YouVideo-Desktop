@@ -1,13 +1,13 @@
 import React from 'react'
-import { Route, useRouteMatch, Switch } from 'react-router-dom'
+import { Route, Switch, useRouteMatch } from 'react-router-dom'
 import HomePage from '../../pages/Home'
 import Nav from '../Nav'
 import useStyles from './style'
 import useLayoutModel from '../../models/layout'
-import HomeLibraryPage from '../../pages/Home/Library';
-import HomeVideosPage from '../../pages/Home/Videos';
-import { Settings } from '@material-ui/icons'
+import HomeLibraryPage from '../../pages/Home/Library'
+import HomeVideosPage from '../../pages/Home/Videos'
 import SettingPage from '../../pages/Home/Setting'
+import TagsPage from '../../pages/Home/Tags'
 
 export const HomeLayout = () => {
   const classes = useStyles()
@@ -23,6 +23,9 @@ export const HomeLayout = () => {
       </div>
       <div className={classes.content}>
         <Switch>
+          <Route path={`${path}/tags`}>
+            <TagsPage />
+          </Route>
           <Route path={`${path}/setting`}>
             <SettingPage />
           </Route>

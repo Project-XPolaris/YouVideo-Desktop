@@ -1,16 +1,6 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import {
-  Avatar,
-  Chip,
-  Divider,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Paper,
-  Typography
-} from '@material-ui/core'
+import { Avatar, Chip, Divider, List, ListItem, ListItemAvatar, ListItemText, Paper } from '@material-ui/core'
 import { Videocam } from '@material-ui/icons'
 import useVideoDetailModel from './model'
 import { getImageUrl } from '../../utils/image'
@@ -66,7 +56,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   })
 )
-const Content = ({}: ContentPropsType) => {
+const Content = (props: ContentPropsType):ReactElement => {
   const classes = useStyles()
   const videoModel = useVideoDetailModel()
   const history = useHistory()

@@ -10,7 +10,7 @@ import { electronApp, electronRemote, isElectron } from '../../remote'
 import React from 'react'
 import { TaskManager } from '../../parts/Task'
 import { useHistory } from 'react-router-dom'
-import { ApplicationConfig } from '../../config';
+import { ApplicationConfig } from '../../config'
 
 const BaseLayout = ({ children }:{children:any}): React.ReactElement => {
   const classes = useStyles()

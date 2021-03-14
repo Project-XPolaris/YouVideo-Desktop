@@ -21,9 +21,9 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1
     },
     content: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(2)
     },
-    list:{
+    list: {
       display: 'flex',
       flexWrap: 'wrap'
     },

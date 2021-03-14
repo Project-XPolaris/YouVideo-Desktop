@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Typography, Pagination } from '@material-ui/core'
+import { Pagination, Typography } from '@material-ui/core'
 import useStyles from './style'
 import VideoItem from '../../../components/VideoItem'
 import useHomeVideoListModel from './model'

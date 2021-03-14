@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    '-webkit-app-region': 'drag',
+    '-webkit-app-region': 'drag'
   },
   main: {
     backgroundColor: '#181818',
@@ -23,10 +23,10 @@ const useStyles = makeStyles((theme) => ({
     overflowX: 'hidden'
   },
   appbar: {
-    backgroundColor: '#202020',
+    backgroundColor: '#202020'
 
   },
-  toolbar:{
+  toolbar: {
     padding: 0
   },
   windowAction: {
@@ -35,6 +35,17 @@ const useStyles = makeStyles((theme) => ({
   },
   actionIcon: {
     fontSize: theme.spacing(2)
+  },
+  '@global': {
+    '*::-webkit-scrollbar': {
+      height: '6px'
+    },
+    '*::-webkit-scrollbar-track': {
+      background: 'rgba(0,0,0,0)'
+    },
+    '*::-webkit-scrollbar-thumb': {
+      backgroundColor: '#303030'
+    }
   }
 }))
 export default useStyles

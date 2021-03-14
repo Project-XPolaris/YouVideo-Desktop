@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { IconButton, Paper, Tooltip } from '@material-ui/core'
-import { ArrowBack, Bookmark, Home } from '@material-ui/icons'
+import { IconButton, Tooltip } from '@material-ui/core'
+import { ArrowBack, Home } from '@material-ui/icons'
 import useLayoutModel from '../../models/layout'
 import { useHistory } from 'react-router-dom'
 
-export interface VideoDetailSidePropsType {
+export interface TagDetailSidePropsType {
 
 }
 
@@ -29,17 +29,17 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(2),
       marginBottom: theme.spacing(2)
     },
-    item:{
+    item: {
       marginBottom: theme.spacing(1)
     }
   })
 )
-const VideoDetailSide = ({}: VideoDetailSidePropsType):ReactElement => {
+const TagDetailSide = ({}: TagDetailSidePropsType):ReactElement => {
   const classes = useStyles()
   const layoutModel = useLayoutModel()
   const history = useHistory()
   return (
-    <Paper className={classes.root} >
+    <>
       <Tooltip title='go back' placement='right'>
         <IconButton onClick={() => history.goBack()} size={'small'} className={classes.item}>
           <ArrowBack />
@@ -50,14 +50,8 @@ const VideoDetailSide = ({}: VideoDetailSidePropsType):ReactElement => {
           <Home />
         </IconButton>
       </Tooltip>
-      <div className={classes.divider}/>
-      <Tooltip title='add tag to video' placement='right'>
-        <IconButton onClick={() => layoutModel.switchDialog('video/addTags')} size={'small'} className={classes.item}>
-          <Bookmark />
-        </IconButton>
-      </Tooltip>
-    </Paper>
+    </>
   )
 }
 
-export default VideoDetailSide
+export default TagDetailSide

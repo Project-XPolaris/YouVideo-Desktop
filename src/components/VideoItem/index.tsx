@@ -3,7 +3,6 @@ import useStyles from './style'
 import { Videocam } from '@material-ui/icons'
 import clsx from 'clsx'
 import { ButtonBase } from '@material-ui/core'
-import { VideoFile } from '../../api/video'
 
 export interface VideoItemPropsType {
   className?: any

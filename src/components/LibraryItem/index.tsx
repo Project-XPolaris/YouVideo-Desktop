@@ -5,7 +5,7 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemSecondaryAction,
-  ListItemText
+  ListItemText,
 } from '@material-ui/core'
 import { Delete, Folder, Sync } from '@material-ui/icons'
 import useStyles from './style'
@@ -16,12 +16,13 @@ export interface LibraryItemPropsType {
   status?:string
   onScan?:() => void
   onDelete?:() => void
+  onClick?:() => void
 }
 
-const LibraryItem = ({ name, path, onScan, status, onDelete }: LibraryItemPropsType):React.ReactElement => {
+const LibraryItem = ({ name, path, onScan, status, onDelete, onClick }: LibraryItemPropsType):React.ReactElement => {
   const classes = useStyles()
   return (
-    <ListItem button>
+    <ListItem button onClick={onClick}>
       <ListItemAvatar>
         <Folder className={classes.icon} />
       </ListItemAvatar>

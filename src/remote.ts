@@ -1,4 +1,4 @@
-import electronD, { remote } from 'electron'
+import electronD from 'electron'
 
 export let electron : typeof electronD
 export let electronRemote : any

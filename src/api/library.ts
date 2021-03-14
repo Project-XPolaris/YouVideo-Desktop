@@ -1,17 +1,16 @@
 import apiRequest from '../utils/request'
 import { ApplicationConfig } from '../config'
 import { ListContainer } from './response'
-import * as path from 'path'
+
 export interface Library {
   id : number
   path: string
   dir_name: string
+  name:string
 }
-export const fetchLibraryList = ({ page = 1, pageSize = 20 }:{ page?:number, pageSize?:number }):Promise<ListContainer<Library>> => {
+export const fetchLibraryList = (query:any):Promise<ListContainer<Library>> => {
   return apiRequest.get(ApplicationConfig.apiPaths.libraryList, {
-    params: {
-      page, pageSize
-    }
+    params: query
   })
 }
 

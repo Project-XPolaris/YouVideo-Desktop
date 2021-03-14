@@ -21,11 +21,9 @@ export interface VideoFile {
   video_id: number
   name: string
 }
-export const fetchVideoList = ({ page = 1, pageSize = 20 }:{ page?:number, pageSize?:number }):Promise<ListContainer<Video>> => {
+export const fetchVideoList = (queryParam:any):Promise<ListContainer<Video>> => {
   return apiRequest.get(ApplicationConfig.apiPaths.videoList, {
-    params: {
-      page, pageSize
-    }
+    params: queryParam
   })
 }
 

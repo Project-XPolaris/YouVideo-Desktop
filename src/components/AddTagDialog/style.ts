@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
 
     },
-    input:{
+    input: {
 
     }
   })

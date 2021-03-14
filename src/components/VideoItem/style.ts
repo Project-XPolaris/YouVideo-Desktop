@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flex: 'none'
     },
     coverBase: {
-      width: '100%',
+      width: '100%'
     },
     placeHolderContainer: {
       width: '100%',

@@ -2,10 +2,9 @@ import React, { ReactElement, useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
 import { useHistory } from 'react-router-dom'
 import { useQuery } from '../../hooks/query'
-import { useLocation } from 'react-use'
 import useStyles from './style'
 import { useLocalStorageState, useSize } from 'ahooks'
-import { PlayArrow, Pause, VolumeUp, VolumeDown, ArrowBack } from '@material-ui/icons'
+import { ArrowBack, Pause, PlayArrow, VolumeDown, VolumeUp } from '@material-ui/icons'
 import { IconButton, Slider, withStyles } from '@material-ui/core'
 import { red } from '@material-ui/core/colors'
 import { formatPlayTime } from '../../utils/time'
@@ -40,7 +39,7 @@ const PlayerPage = ({}: PlayerPagePropsType): ReactElement => {
   const classes = useStyles()
   const query = useQuery()
   const history = useHistory()
-  const ref = useRef()
+  const ref : any = useRef()
   const size = useSize(ref)
   const [isPlay, setIsPlay] = useState<boolean>(true)
   const [slideValue, setSlideValue] = useState<number>(-1)

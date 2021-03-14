@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Typography } from '@material-ui/core'
 import useStyles from './style'
 import VideoDetailSide from './side'
 import Content from './content'
@@ -7,7 +6,6 @@ import AddTagDialog from '../../components/AddTagDialog'
 import useLayoutModel from '../../models/layout'
 import { useParams } from 'react-router-dom'
 import useVideoDetailModel from './model'
-import { addVideoTags } from '../../api/tag'
 
 export interface VideoDetailPagePropsType {
 

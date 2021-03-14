@@ -1,11 +1,8 @@
 import React from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import HomePage from '../../pages/Home'
-import VideoDetailPage from '../../pages/VideoDetail';
+import VideoDetailPage from '../../pages/VideoDetail'
+
 const RouterLayout = () => {
   return (
     <Router>
