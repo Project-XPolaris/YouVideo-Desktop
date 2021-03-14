@@ -10,7 +10,10 @@ const TagDetailModel = () => {
   const [videoList, setVideoList] = useState<Video[]>([])
   const pagination = usePagination({})
   const loadVideo = async ({ page = pagination.page }:{page?:number}) => {
-    const response = await fetchVideoList({ page })
+    if (tagId === undefined) {
+      return
+    }
+    const response = await fetchVideoList({ page, tag: tagId })
     setVideoList(response.result)
     pagination.update(response)
   }
