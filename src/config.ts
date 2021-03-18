@@ -10,7 +10,8 @@ export const ApplicationConfig = {
     tags: '/tag',
     tagsVideo: '/tag/videos',
     videoTags: '/tag',
-    tagVideos: '/tag/:id/videos'
+    tagVideos: '/tag/:id/videos',
+    info: '/info'
   },
   storeKey: {
     apiUrl: 'apiUrl'

@@ -15,10 +15,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     form: {
       padding: theme.spacing(8)
-
+    },
+    input: {
+      marginBottom: theme.spacing(2)
     },
     fab: {
-
       position: 'absolute',
       bottom: theme.spacing(2),
       right: theme.spacing(2)

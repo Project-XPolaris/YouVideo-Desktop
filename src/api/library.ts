@@ -14,10 +14,10 @@ export const fetchLibraryList = (query:any):Promise<ListContainer<Library>> => {
   })
 }
 
-export const createLibrary = (path:string):Promise<Library> => {
+export const createLibrary = (name:string, path:string, privateLibrary:boolean):Promise<Library> => {
   return apiRequest.post(ApplicationConfig.apiPaths.libraryList, {
     data: {
-      path
+      path, name, private: privateLibrary
     }
   })
 }

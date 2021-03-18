@@ -11,11 +11,18 @@ const useStyles = makeStyles((theme: Theme) =>
     button: {
       color: theme.palette.primary.contrastText
     },
-    pathHeader: {
-      display: 'flex',
-      alignItems: 'center',
+    header: {
       backgroundColor: '#2a2a2a',
       padding: theme.spacing(2)
+    },
+    field: {
+      paddingBottom: theme.spacing(1),
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2)
+    },
+    pathHeader: {
+      display: 'flex',
+      alignItems: 'center'
     },
     pathInput: {
       flex: 1,

@@ -34,8 +34,8 @@ const HomeLibraryPage = ({}: HomeLibraryPagePropsType):React.ReactElement => {
       <PathSelectDialog
         open={selectPathOpen}
         onCancel={() => setSelectPathOpen(false)}
-        onOk={(path) => {
-          model.create(path)
+        onOk={(name, path, privateLibrary) => {
+          model.create(name, path, privateLibrary)
           setSelectPathOpen(false)
         }}
       />
@@ -53,7 +53,7 @@ const HomeLibraryPage = ({}: HomeLibraryPagePropsType):React.ReactElement => {
             model.libraryList.map(library => (
               <LibraryItem
                 key={library.id}
-                name={library.dir_name}
+                name={library.name}
                 path={library.path}
                 status={getStatus(library.id)}
                 onScan={() => model.scan(library.id)}

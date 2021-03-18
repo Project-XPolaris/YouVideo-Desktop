@@ -7,6 +7,13 @@ const apiRequest = extend({
 })
 apiRequest.interceptors.request.use((url, options) => {
   const apiUrl = localStorage.getItem(ApplicationConfig.storeKey.apiUrl)
+  const token = localStorage.getItem('token')
+  if (token) {
+    options.headers = {
+      ...options.headers,
+      Authorization: `Bearer ${token}`
+    }
+  }
   return {
     url: apiUrl + url,
     options

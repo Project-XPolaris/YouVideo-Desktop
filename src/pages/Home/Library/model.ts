@@ -8,8 +8,8 @@ function HomeLibraryModel () {
     const response = await fetchLibraryList({})
     setLibraryList(response.result)
   }
-  const create = async (path:string) => {
-    await createLibrary(path)
+  const create = async (name:string, path:string, privateLibrary: boolean) => {
+    await createLibrary(name, path, privateLibrary)
     await loadLibrary()
   }
   const scan = async (id : number) => {

@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react'
 import useStyles from './style'
 import {
   Avatar,
-  Button,
+  Button, Checkbox,
   Dialog,
   DialogActions,
-  DialogContent,
+  DialogContent, FormControlLabel,
   IconButton,
   InputBase,
   List,
   ListItem,
   ListItemAvatar,
-  ListItemText,
+  ListItemText
 } from '@material-ui/core'
 import { ArrowBack, Description, Folder } from '@material-ui/icons'
 import { fetchDirectoryContent, FileItem } from '../../api/file'
@@ -19,7 +19,7 @@ import { fetchDirectoryContent, FileItem } from '../../api/file'
 export interface PathSelectDialogPropsType {
   open:boolean
   onCancel:() => void
-  onOk:(path:string) => void
+  onOk:(name:string, path:string, privateLibrary:boolean) => void
 }
 
 const PathSelectDialog = ({ open = false, onCancel, onOk }: PathSelectDialogPropsType):React.ReactElement => {
@@ -27,6 +27,8 @@ const PathSelectDialog = ({ open = false, onCancel, onOk }: PathSelectDialogProp
   const [currentPath, setCurrentPath] = useState<string | undefined>()
   const [pathInput, setPathInput] = useState<string | undefined>()
   const [content, setContent] = useState<FileItem[]>([])
+  const [name, setName] = useState<string | undefined>()
+  const [privateLibrary, setPrivateLibrary] = useState<boolean>(false)
   const [sep, setSep] = useState<string | undefined>()
   useEffect(() => {
     (async () => {
@@ -45,33 +47,51 @@ const PathSelectDialog = ({ open = false, onCancel, onOk }: PathSelectDialogProp
       onClose={onCancel}
     >
       <DialogContent>
-        <div className={classes.pathHeader}>
-          <IconButton
-            className={classes.backIcon}
-            size={'small'}
-            onClick={() => {
-              if (currentPath && sep) {
-                const parts = currentPath.split(sep)
-                parts.pop()
-                setCurrentPath(parts.join(sep))
+        <div className={classes.header}>
+          <div className={classes.field}>
+            <InputBase fullWidth placeholder={'Library name'} onChange={(e) => setName(e.target.value)} />
+          </div>
+          <div className={classes.field}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  name="checkedB"
+                  color="primary"
+                  value={privateLibrary}
+                  onChange={(e) => setPrivateLibrary(e.target.checked)}
+                />
               }
-            }}
-          >
-            <ArrowBack />
-          </IconButton>
-          <InputBase
-            className={classes.pathInput}
-            value={pathInput}
-            onChange={(e) => setPathInput(e.target.value)}
-          />
-          <Button
-            color='secondary'
-            onClick={() => {
-              setCurrentPath(pathInput)
-            }}
-          >
-            Go
-          </Button>
+              label="Primary"
+            />
+          </div>
+          <div className={classes.pathHeader}>
+            <IconButton
+              className={classes.backIcon}
+              size={'small'}
+              onClick={() => {
+                if (currentPath && sep) {
+                  const parts = currentPath.split(sep)
+                  parts.pop()
+                  setCurrentPath(parts.join(sep))
+                }
+              }}
+            >
+              <ArrowBack />
+            </IconButton>
+            <InputBase
+              className={classes.pathInput}
+              value={pathInput}
+              onChange={(e) => setPathInput(e.target.value)}
+            />
+            <Button
+              color='secondary'
+              onClick={() => {
+                setCurrentPath(pathInput)
+              }}
+            >
+              Go
+            </Button>
+          </div>
         </div>
         <div className={classes.itemContainer}>
           <List>
@@ -104,8 +124,8 @@ const PathSelectDialog = ({ open = false, onCancel, onOk }: PathSelectDialogProp
         <Button
           className={classes.button}
           onClick={() => {
-            if (currentPath) {
-              onOk(currentPath)
+            if (currentPath && name) {
+              onOk(name, currentPath, privateLibrary)
             }
           }}
         >
