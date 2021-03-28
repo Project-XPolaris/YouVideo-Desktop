@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 export type TabIndex = 'Home' | 'Library' | 'Videos' | 'Settings' | 'Tags'
 export type NavIcon = 'Menu' | 'Back'
-export type DialogKey = 'library/pickDirectory' | 'video/addTags'
+export type DialogKey = 'library/pickDirectory' | 'video/addTags' | 'video/transcode'
 const LayoutModel = () => {
   const [activeIndex, setActiveIndex] = useState<TabIndex>('Home')
   const [navIcon, setNavIcon] = useState<NavIcon>('Menu')

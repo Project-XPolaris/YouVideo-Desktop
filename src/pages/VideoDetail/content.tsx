@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Avatar, Chip, Divider, List, ListItem, ListItemAvatar, ListItemText, Paper } from '@material-ui/core'
 import { Videocam } from '@material-ui/icons'
@@ -6,6 +6,9 @@ import useVideoDetailModel from './model'
 import { getImageUrl } from '../../utils/image'
 import { useHistory } from 'react-router-dom'
 import { ApplicationConfig } from '../../config'
+import VideoFileItem from '../../components/VideoFileItem'
+import { VideoFile } from '../../api/video'
+import TranscodeDialog from '../../components/TranscodeDialog'
 
 export interface ContentPropsType {
 
@@ -56,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   })
 )
-const Content = (props: ContentPropsType):ReactElement => {
+const Content = (props: ContentPropsType): ReactElement => {
   const classes = useStyles()
   const videoModel = useVideoDetailModel()
   const history = useHistory()
@@ -104,17 +107,13 @@ const Content = (props: ContentPropsType):ReactElement => {
         {
           videoModel.video?.files?.map((file) => {
             return (
-              <ListItem button key={file.id} onClick={() => {
-                history.push(`/player?playurl=${localStorage.getItem(ApplicationConfig.storeKey.apiUrl)}/video/file/${file.id}/stream`)
-              }}>
-                <ListItemAvatar>
-                  <Avatar>
-                    <Videocam />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary={file.name} secondary={''} />
-
-              </ListItem>
+              <VideoFileItem
+                file={file}
+                key={file.id}
+                onClick={() => {
+                  history.push(`/player?playurl=${localStorage.getItem(ApplicationConfig.storeKey.apiUrl)}/video/file/${file.id}/stream`)
+                }}
+              />
             )
           })
         }

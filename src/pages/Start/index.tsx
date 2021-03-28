@@ -6,6 +6,7 @@ import { ApplicationConfig } from '../../config'
 import { useHistory } from 'react-router-dom'
 import { fetchServiceInfo } from '../../api/info'
 import request from 'umi-request'
+import { authRequest } from '../../utils/request'
 
 export interface StartPagePropsType {
 
@@ -13,8 +14,8 @@ export interface StartPagePropsType {
 
 const StartPage = ({}: StartPagePropsType) => {
   const [apiUrl, setApiUrl] = useState<string | undefined>()
-  const [username, setUsername] = useState<string | undefined>()
-  const [password, setPassword] = useState<string | undefined>()
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
   const history = useHistory()
   const classes = useStyles()
@@ -22,8 +23,8 @@ const StartPage = ({}: StartPagePropsType) => {
     if (apiUrl) {
       localStorage.setItem(ApplicationConfig.storeKey.apiUrl, apiUrl)
       const info = await fetchServiceInfo()
-      if (info.authEnable) {
-        const response = await request.post(info.authUrl, { data: { username, password } })
+      if (info.authEnable && username.length > 0 && password.length > 0) {
+        const response = await authRequest.post(info.authUrl, { data: { username, password } })
         if (response.token) {
           localStorage.setItem('token', response.token)
           history.push('/home')

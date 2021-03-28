@@ -6,6 +6,12 @@ const apiRequest = extend({
   credentials: 'omit'
 })
 apiRequest.interceptors.request.use((url, options) => {
+  if (url.startsWith('http')) {
+    return {
+      url,
+      options
+    }
+  }
   const apiUrl = localStorage.getItem(ApplicationConfig.storeKey.apiUrl)
   const token = localStorage.getItem('token')
   if (token) {
@@ -18,5 +24,9 @@ apiRequest.interceptors.request.use((url, options) => {
     url: apiUrl + url,
     options
   }
+})
+export const authRequest = extend({
+  timeout: 1000,
+  credentials: 'omit'
 })
 export default apiRequest

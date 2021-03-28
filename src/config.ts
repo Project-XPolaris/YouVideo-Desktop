@@ -11,7 +11,10 @@ export const ApplicationConfig = {
     tagsVideo: '/tag/videos',
     videoTags: '/tag',
     tagVideos: '/tag/:id/videos',
-    info: '/info'
+    info: '/info',
+    codec: '/codec',
+    format: '/format',
+    trans: '/video/:id/trans'
   },
   storeKey: {
     apiUrl: 'apiUrl'
