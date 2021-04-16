@@ -17,6 +17,8 @@ export const ApplicationConfig = {
     trans: '/video/:id/trans'
   },
   storeKey: {
-    apiUrl: 'apiUrl'
+    apiUrl: 'apiUrl',
+    token: 'TOKEN',
+    username: 'USERNAME'
   }
 }

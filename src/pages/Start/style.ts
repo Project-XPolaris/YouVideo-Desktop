@@ -2,27 +2,30 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      flexGrow: 1,
-      padding: theme.spacing(2),
+    main: {
+      width: '100vw',
+      minHeight: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      padding: theme.spacing(4),
       position: 'relative'
     },
-    title: {
-      ...theme.typography.h3,
-      color: 'white',
-      flexGrow: 1,
-      fontWeight: 300
-    },
     form: {
-      padding: theme.spacing(8)
+      marginTop: theme.spacing(4),
+      width: '100%',
+      flexGrow: 1
+    },
+    fab: {
+      alignSelf: 'flex-end'
+    },
+    tabs: {
+      marginTop: theme.spacing(2)
+    },
+    itemPrimary: {
+      color: 'white'
     },
     input: {
       marginBottom: theme.spacing(2)
-    },
-    fab: {
-      position: 'absolute',
-      bottom: theme.spacing(2),
-      right: theme.spacing(2)
     }
   })
 )

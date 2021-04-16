@@ -15,6 +15,7 @@ function createWindow () {
       webSecurity: false,
       allowRunningInsecureContent: true
     },
+    icon: 'assets/icon.png',
     frame: false
   })
 
