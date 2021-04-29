@@ -11,7 +11,7 @@ mainElement.setAttribute('id', 'root')
 document.body.appendChild(mainElement)
 
 const App = () => {
-  useTitle('YouMusic')
+  useTitle('YouVideo')
   return (
     <>
       <ThemeProvider theme={appTheme}>

@@ -6,11 +6,11 @@ import { ArrowBack } from '@material-ui/icons'
 import MinimizeSharpIcon from '@material-ui/icons/MinimizeSharp'
 import CheckBoxOutlineBlankSharpIcon from '@material-ui/icons/CheckBoxOutlineBlankSharp'
 import ClearSharpIcon from '@material-ui/icons/ClearSharp'
-import { electronApp, electronRemote, isElectron } from '../../remote'
 import React from 'react'
 import { TaskManager } from '../../parts/Task'
 import { useHistory } from 'react-router-dom'
 import { ApplicationConfig } from '../../config'
+import { ipcRenderer } from 'electron'
 
 const BaseLayout = ({ children }:{children:any}): React.ReactElement => {
   const classes = useStyles()
@@ -51,18 +51,13 @@ const BaseLayout = ({ children }:{children:any}): React.ReactElement => {
     }
   }
   const onClose = () => {
-    electronApp.exit()
+    ipcRenderer.send('close')
   }
   const onMin = () => {
-    electronRemote.BrowserWindow.getFocusedWindow().minimize()
+    ipcRenderer.send('min')
   }
   const onMax = () => {
-    const currentWindow = electronRemote.BrowserWindow.getFocusedWindow()
-    if (currentWindow.isMaximized()) {
-      currentWindow.unmaximize()
-    } else {
-      currentWindow.maximize()
-    }
+    ipcRenderer.send('max')
   }
   return (
     <>
@@ -75,7 +70,7 @@ const BaseLayout = ({ children }:{children:any}): React.ReactElement => {
               YouVideo
             </Typography>
             {
-              isElectron() &&
+              ipcRenderer &&
               <>
                 <IconButton size='small' className={classes.windowAction} onClick={onMin}>
                   <MinimizeSharpIcon className={classes.actionIcon} />
