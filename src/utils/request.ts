@@ -13,7 +13,7 @@ apiRequest.interceptors.request.use((url, options) => {
     }
   }
   const apiUrl = localStorage.getItem(ApplicationConfig.storeKey.apiUrl)
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem(ApplicationConfig.storeKey.token)
   if (token) {
     options.headers = {
       ...options.headers,
