@@ -15,6 +15,10 @@ export interface Task<Output> {
 export interface ScanLibraryTaskOutput {
   id: number
   path: string
+  total:number
+  current:number
+  currentName:string
+  currentPath:string
 }
 
 export const getTaskList = ():Promise<ListContainer<Task<AnyOutput>>> => {

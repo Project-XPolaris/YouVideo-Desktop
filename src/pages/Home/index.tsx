@@ -2,6 +2,7 @@ import useStyles from './style'
 import useHomeModel from './model'
 import React, { useEffect } from 'react'
 import HorizonVideoCollection from '../../components/HorizonVideoCollection'
+import { TaskManager } from '../../parts/Task'
 
 const HomePage = ():React.ReactElement => {
   const classes = useStyles()

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import useStyles from './style'
 import {
   Avatar,
@@ -10,7 +10,7 @@ import {
   Tab,
   Tabs,
   TextField,
-  Typography,
+  Typography
 } from '@material-ui/core'
 import { NavigateNext, Person } from '@material-ui/icons'
 import { ApplicationConfig } from '../../config'
@@ -19,12 +19,13 @@ import { fetchServiceInfo } from '../../api/info'
 import request from 'umi-request'
 import { LoginHistory, loginHistoryManager } from '../../utils/login'
 import { useUpdate } from 'ahooks'
+import { checkUserAuth, fetchUserAuth } from '../../api/auth'
 
 export interface StartPagePropsType {
 
 }
 
-const StartPage = ({}: StartPagePropsType) => {
+const StartPage = ({}: StartPagePropsType):ReactElement => {
   const classes = useStyles()
   const history = useHistory()
   const [inputAPIURL, setInputAPIURL] = useState<string | undefined>()
@@ -51,9 +52,10 @@ const StartPage = ({}: StartPagePropsType) => {
     }
     localStorage.setItem(ApplicationConfig.storeKey.apiUrl, inputAPIURL)
     const serviceInfo = await fetchServiceInfo()
-    if (inputUsername && inputPassword && serviceInfo.authEnable && serviceInfo.authUrl) {
-      const response = await request.post(serviceInfo.authUrl, { data: { username: inputUsername, password: inputPassword } })
-      if (response.token) {
+    if (inputUsername && inputPassword && serviceInfo.authEnable && serviceInfo.authEnable) {
+      const response = await fetchUserAuth(inputUsername, inputPassword)
+      console.log(response)
+      if (response.success) {
         const loginHistory : LoginHistory = {
           apiUrl: inputAPIURL,
           username: inputUsername,
@@ -73,7 +75,7 @@ const StartPage = ({}: StartPagePropsType) => {
       localStorage.setItem(ApplicationConfig.storeKey.username, 'public')
       loginHistoryManager.addHistory(loginHistory)
     }
-    history.push('/home')
+    // history.push('/home')
   }
   useEffect(() => {
     // check()
@@ -81,13 +83,19 @@ const StartPage = ({}: StartPagePropsType) => {
     refresh()
   }, [])
   const renderHistoryView = () => {
-    const onItemClick = (loginHistory:LoginHistory) => {
+    const onItemClick = async (loginHistory:LoginHistory) => {
       localStorage.setItem(ApplicationConfig.storeKey.apiUrl, loginHistory.apiUrl)
       localStorage.setItem(ApplicationConfig.storeKey.username, loginHistory.username)
-      if (loginHistory.token !== undefined && loginHistory.token.length > 0) {
-        localStorage.setItem(ApplicationConfig.storeKey.token, loginHistory.token)
+      const info = await fetchServiceInfo()
+      if (info.authEnable && loginHistory.token !== '') {
+        const token = await checkUserAuth(loginHistory.token)
+        if (token.success) {
+          localStorage.setItem(ApplicationConfig.storeKey.token, loginHistory.token)
+          history.push('/home')
+        }
+      } else {
+        history.push('/home')
       }
-      history.push('/home')
     }
     return (
       <div>

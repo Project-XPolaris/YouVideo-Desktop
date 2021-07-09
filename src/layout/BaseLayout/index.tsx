@@ -61,7 +61,6 @@ const BaseLayout = ({ children }:{children:any}): React.ReactElement => {
   }
   return (
     <>
-      <TaskManager />
       <div>
         <AppBar position='fixed' elevation={0} className={classes.appbar}>
           <Toolbar variant='dense' className={classes.toolbar}>

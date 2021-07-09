@@ -24,7 +24,6 @@ const HomeLibraryPage = ({}: HomeLibraryPagePropsType):React.ReactElement => {
   const getStatus = (libraryId : number) => {
     const task = taskModel.taskList.find(it => it.type === 'ScanLibrary' && it.output.id === libraryId)
     if (task && task.status === 'Running') {
-      console.log(task)
       return 'Scanning'
     }
     return undefined
@@ -55,6 +54,7 @@ const HomeLibraryPage = ({}: HomeLibraryPagePropsType):React.ReactElement => {
                 key={library.id}
                 name={library.name}
                 path={library.path}
+                task={taskModel.taskList.find(it => it.type === 'ScanLibrary' && it.output.id === library.id)}
                 status={getStatus(library.id)}
                 onScan={() => model.scan(library.id)}
                 onDelete={() => model.remove(library.id)}

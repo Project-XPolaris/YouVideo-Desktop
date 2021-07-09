@@ -14,7 +14,8 @@ export const ApplicationConfig = {
     info: '/info',
     codec: '/codec',
     format: '/format',
-    trans: '/video/:id/trans'
+    trans: '/video/:id/trans',
+    userAuth: '/user/auth'
   },
   storeKey: {
     apiUrl: 'apiUrl',

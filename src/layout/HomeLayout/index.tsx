@@ -8,6 +8,7 @@ import HomeLibraryPage from '../../pages/Home/Library'
 import HomeVideosPage from '../../pages/Home/Videos'
 import SettingPage from '../../pages/Home/Setting'
 import TagsPage from '../../pages/Home/Tags'
+import { TaskManager } from '../../parts/Task'
 
 export const HomeLayout = () => {
   const classes = useStyles()
@@ -18,6 +19,7 @@ export const HomeLayout = () => {
   }
   return (
     <div className={classes.main}>
+      <TaskManager />
       <div className={classes.nav}>
         <Nav />
       </div>
