@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme: Theme) =>
     form: {
       marginTop: theme.spacing(4),
       width: '100%',
-      flexGrow: 1
+      flexGrow: 1,
+      position: 'relative'
     },
     fab: {
       alignSelf: 'flex-end'
@@ -26,6 +27,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     input: {
       marginBottom: theme.spacing(2)
+    },
+    list: {
+      height: '100%',
+      width: '100%',
+      position: 'absolute',
+      overflowY: 'scroll'
     }
   })
 )

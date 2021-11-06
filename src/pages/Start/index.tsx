@@ -75,7 +75,7 @@ const StartPage = ({}: StartPagePropsType):ReactElement => {
       localStorage.setItem(ApplicationConfig.storeKey.username, 'public')
       loginHistoryManager.addHistory(loginHistory)
     }
-    // history.push('/home')
+    history.push('/home')
   }
   useEffect(() => {
     // check()
@@ -98,7 +98,7 @@ const StartPage = ({}: StartPagePropsType):ReactElement => {
       }
     }
     return (
-      <div>
+      <div className={classes.list}>
         <List>
           {
             loginHistoryManager.list.map((loginHistory, idx) => {
