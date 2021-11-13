@@ -1,7 +1,9 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
 import * as path from 'path'
 import * as url from 'url'
-
+if (process.platform === 'darwin') {
+  app.dock.setIcon(path.join(__dirname, 'assets/icon.png'))
+}
 let mainWindow: Electron.BrowserWindow | null
 
 function createWindow () {
@@ -14,7 +16,7 @@ function createWindow () {
       webSecurity: false,
       allowRunningInsecureContent: true
     },
-    icon: 'assets/icon.png',
+    icon: 'assets/icon.ico',
     frame: false
   })
 
@@ -35,6 +37,7 @@ function createWindow () {
     mainWindow = null
   })
 }
+
 ipcMain.on('close', () => {
   app.exit(0)
 })
@@ -66,4 +69,5 @@ app.on('ready', createWindow)
     //     .catch((err) => console.log('An error occurred: ', err))
     // }
   })
+
 app.allowRendererProcessReuse = true
