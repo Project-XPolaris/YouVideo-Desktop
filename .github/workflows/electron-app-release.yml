@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [windows-2019, macos-10.15]
+        os: [macos-latest, ubuntu-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v3
@@ -24,9 +24,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-    - name: npm install
-      run: |
-          yarn install
+    - name: yarn install
+      run: yarn install
     - name: build dist
       run: yarn run build
     - name: Build/release Electron app
