@@ -24,10 +24,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-    - name: yarn install
-      run: yarn install
-    - name: build dist
-      run: yarn run build
     - name: Build/release Electron app
       uses: samuelmeuli/action-electron-builder@v1
       with:
