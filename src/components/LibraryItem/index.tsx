@@ -6,8 +6,8 @@ import {
   ListItemAvatar,
   ListItemSecondaryAction,
   ListItemText
-} from '@material-ui/core'
-import { Delete, Folder, Sync } from '@material-ui/icons'
+} from '@mui/material'
+import { Delete, Folder, Sync } from '@mui/icons-material'
 import useStyles from './style'
 import { ScanLibraryTaskOutput, Task } from '../../api/task'
 

@@ -15,7 +15,8 @@ export const ApplicationConfig = {
     codec: '/codec',
     format: '/format',
     trans: '/video/:id/trans',
-    userAuth: '/user/auth'
+    userAuth: '/user/auth',
+    youplusLogin: '/oauth/youplus'
   },
   storeKey: {
     apiUrl: 'apiUrl',

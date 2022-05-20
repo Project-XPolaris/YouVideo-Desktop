@@ -1,15 +1,16 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
+import appTheme from '../../theme'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {},
   header: {
-    padding: theme.spacing(2),
+    padding: appTheme.spacing(2),
     display: 'flex',
     flexDirection: 'row',
     position: 'sticky',
     width: '100%',
     top: 0,
-    marginTop: theme.spacing(8),
+    marginTop: appTheme.spacing(8),
     backgroundColor: '#181818',
     zIndex: 1
   },
@@ -27,10 +28,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(4),
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
+    paddingTop: appTheme.spacing(2),
+    paddingBottom: appTheme.spacing(4),
+    paddingLeft: appTheme.spacing(2),
+    paddingRight: appTheme.spacing(2),
     borderRadius: 0,
     backgroundColor: '#303030'
   }

@@ -2,7 +2,7 @@ import React from 'react'
 import StartPage from '../../pages/Start'
 import VideoDetailPage from '../../pages/VideoDetail'
 import { HomeLayout } from '../HomeLayout'
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import BaseLayout from '../BaseLayout'
 import PlayerPage from '../../pages/Player'
 import TagPage from '../../pages/Tag'
@@ -14,40 +14,62 @@ export interface BlankLayoutPropsType {
 
 const BlankLayout = ({}: BlankLayoutPropsType) => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/player" >
-          <BaseLayout>
-            <PlayerPage />
-          </BaseLayout>
-        </Route>
-        <Route path="/start" >
-          <BaseLayout>
-            <StartPage />
-          </BaseLayout>
-        </Route>
-        <Route path="/library/:id" >
-          <BaseLayout>
-            <LibraryPage/>
-          </BaseLayout>
-        </Route>
-        <Route path="/tag/:id" >
-          <BaseLayout>
-            <TagPage/>
-          </BaseLayout>
-        </Route>
-        <Route path="/video/:id" >
-          <BaseLayout>
-            <VideoDetailPage />
-          </BaseLayout>
-        </Route>
-        <Route path='/home'>
-          <BaseLayout>
-            <HomeLayout />
-          </BaseLayout>
-        </Route>
-      </Switch>
-    </Router>
+    <HashRouter>
+      <Routes>
+        <Route
+          path="/player"
+          element={
+            <BaseLayout>
+              <PlayerPage />
+            </BaseLayout>
+          }
+        />
+        <Route
+          path="/start"
+          element={
+            <BaseLayout>
+              <StartPage />
+            </BaseLayout>
+          }
+        />
+        <Route
+          path="/library/:id"
+          element={
+            <BaseLayout>
+              <LibraryPage/>
+            </BaseLayout>
+          }
+        />
+        <Route
+          path="/tag/:id"
+          element={
+            <BaseLayout>
+              <TagPage/>
+            </BaseLayout>
+          }
+        />
+        <Route
+          path="/video/:id"
+          element={
+            <BaseLayout>
+              <VideoDetailPage />
+            </BaseLayout>
+          }
+        />
+        <Route
+          path='/home/*'
+          element={
+            <BaseLayout>
+              <HomeLayout />
+            </BaseLayout>
+          }
+        />
+        <Route
+          path="/"
+          element={<Navigate to="/start" replace />}
+        />
+      </Routes>
+    </HashRouter>
   )
 }
 

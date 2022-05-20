@@ -1,6 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
+import appTheme from '../../theme'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: '100vw',
     display: 'flex',
@@ -9,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   control: {
-    height: theme.spacing(8),
+    height: appTheme.spacing(8),
     backgroundColor: '#202020',
     position: 'absolute',
     width: '100vw',
@@ -17,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     overflowX: 'hidden',
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2)
+    paddingLeft: appTheme.spacing(2),
+    paddingRight: appTheme.spacing(2)
   },
   playbar: {
     position: 'absolute',
-    bottom: theme.spacing(6)
+    bottom: appTheme.spacing(6)
   },
   center: {
     display: 'flex',
@@ -30,9 +31,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
   volumeBar: {
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    width: theme.spacing(15)
+    marginLeft: appTheme.spacing(2),
+    marginRight: appTheme.spacing(2),
+    width: appTheme.spacing(15)
   },
   icon: {
     color: 'white'
@@ -47,9 +48,9 @@ const useStyles = makeStyles((theme) => ({
     color: 'white'
   },
   playTime: {
-    ...theme.typography.body1,
-    marginRight: theme.spacing(1),
-    marginLeft: theme.spacing(1)
+    ...appTheme.typography.body1,
+    marginRight: appTheme.spacing(1),
+    marginLeft: appTheme.spacing(1)
   }
 }))
 export default useStyles

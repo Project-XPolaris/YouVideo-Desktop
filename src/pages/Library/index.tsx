@@ -1,13 +1,13 @@
 import React, { ReactElement, useEffect } from 'react'
 import DetailLayout from '../../components/DetailLayout'
-import { useHistory, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import useStyles from '../Tag/style'
 import useLibraryDetailModel from './model'
 import ActionSide from '../../components/ActionSide'
 import { VideoFile } from '../../api/video'
 import VideoItem from '../../components/VideoItem'
 import { getImageUrl } from '../../utils/image'
-import { Pagination } from '@material-ui/core'
+import { Pagination } from '@mui/material'
 
 export interface LibraryPagePropsType {
 
@@ -17,7 +17,7 @@ const LibraryPage = ({}: LibraryPagePropsType): ReactElement => {
   const { id } = useParams()
   const classes = useStyles()
   const model = useLibraryDetailModel()
-  const history = useHistory()
+  const history = useNavigate()
   useEffect(() => {
     model.setLibraryId(Number(id))
   }, [])
@@ -43,7 +43,7 @@ const LibraryPage = ({}: LibraryPagePropsType): ReactElement => {
                   className={classes.item}
                   title={video.name}
                   coverUrl={getImageUrl(file?.cover)}
-                  onClick={() => history.push(`/video/${video.id}`)}
+                  onClick={() => history(`/video/${video.id}`)}
                   coverHeight={96}
                 />
               )

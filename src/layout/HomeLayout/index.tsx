@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import HomePage from '../../pages/Home'
 import Nav from '../Nav'
 import useStyles from './style'
@@ -12,7 +12,6 @@ import { TaskManager } from '../../parts/Task'
 
 export const HomeLayout = () => {
   const classes = useStyles()
-  const { path, url } = useRouteMatch()
   const layoutModel = useLayoutModel()
   if (layoutModel.navIcon !== 'Menu') {
     layoutModel.setNavIcon('Menu')
@@ -24,23 +23,13 @@ export const HomeLayout = () => {
         <Nav />
       </div>
       <div className={classes.content}>
-        <Switch>
-          <Route path={`${path}/tags`}>
-            <TagsPage />
-          </Route>
-          <Route path={`${path}/setting`}>
-            <SettingPage />
-          </Route>
-          <Route path={`${path}/videos`}>
-            <HomeVideosPage />
-          </Route>
-          <Route path={`${path}/library`}>
-            <HomeLibraryPage />
-          </Route>
-          <Route path={path}>
-            <HomePage />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path='tags' element={<TagsPage />} />
+          <Route path='/setting' element={<SettingPage/>} />
+          <Route path='/videos' element={<HomeVideosPage/>} />
+          <Route path='/library' element={<HomeLibraryPage/>} />
+          <Route path='/' element={<HomePage/>}/>
+        </Routes>
       </div>
     </div>
   )

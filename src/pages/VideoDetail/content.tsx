@@ -1,24 +1,22 @@
-import React, { ReactElement, useEffect, useState } from 'react'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { Avatar, Chip, Divider, List, ListItem, ListItemAvatar, ListItemText, Paper } from '@material-ui/core'
-import { Videocam } from '@material-ui/icons'
+import React, { ReactElement } from 'react'
+import { createStyles, makeStyles } from '@mui/styles'
+import { Chip, Divider, List, Paper } from '@mui/material'
 import useVideoDetailModel from './model'
 import { getImageUrl } from '../../utils/image'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { ApplicationConfig } from '../../config'
 import VideoFileItem from '../../components/VideoFileItem'
-import { VideoFile } from '../../api/video'
-import TranscodeDialog from '../../components/TranscodeDialog'
+import appTheme from '../../theme'
 
 export interface ContentPropsType {
 
 }
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       width: '70%',
-      padding: theme.spacing(2),
+      padding: appTheme.spacing(2),
       display: 'flex',
       flexDirection: 'column',
       height: 'fit-content'
@@ -34,35 +32,35 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     info: {
       flexGrow: 1,
-      marginLeft: theme.spacing(2)
+      marginLeft: appTheme.spacing(2)
     },
     title: {
-      ...theme.typography.h6,
+      ...appTheme.typography.h6,
       fontWeight: 300
     },
     divider: {
-      marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(2)
+      marginTop: appTheme.spacing(2),
+      marginBottom: appTheme.spacing(2)
     },
     sectionLabel: {
-      ...theme.typography.h6
+      ...appTheme.typography.h6
     },
     tagsContainer: {
       display: 'flex',
-      marginTop: theme.spacing(2),
+      marginTop: appTheme.spacing(2),
       flexWrap: 'wrap'
     },
     tag: {
-      marginRight: theme.spacing(1),
+      marginRight: appTheme.spacing(1),
 
-      marginBottom: theme.spacing(1)
+      marginBottom: appTheme.spacing(1)
     }
   })
 )
 const Content = (props: ContentPropsType): ReactElement => {
   const classes = useStyles()
   const videoModel = useVideoDetailModel()
-  const history = useHistory()
+  const history = useNavigate()
   const getCover = () => {
     if (videoModel.video === undefined || videoModel.video.files.length === 0) {
       return undefined
@@ -111,7 +109,7 @@ const Content = (props: ContentPropsType): ReactElement => {
                 file={file}
                 key={file.id}
                 onClick={() => {
-                  history.push(`/player?playurl=${localStorage.getItem(ApplicationConfig.storeKey.apiUrl)}/video/file/${file.id}/stream`)
+                  history(`/player?playurl=${localStorage.getItem(ApplicationConfig.storeKey.apiUrl)}/video/file/${file.id}/stream`)
                 }}
               />
             )

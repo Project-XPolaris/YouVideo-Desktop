@@ -1,9 +1,9 @@
 import React, { ReactElement, useEffect } from 'react'
-import { Chip, Typography } from '@material-ui/core'
+import { Chip, Typography } from '@mui/material'
 import useStyles from './style'
 import useTagsModel from './model'
-import { Bookmark } from '@material-ui/icons'
-import { useHistory } from 'react-router-dom'
+import { Bookmark } from '@mui/icons-material'
+import { useNavigate } from 'react-router-dom'
 
 export interface TagsPagePropsType {
 
@@ -12,7 +12,7 @@ export interface TagsPagePropsType {
 const TagsPage = ({}: TagsPagePropsType): ReactElement => {
   const classes = useStyles()
   const model = useTagsModel()
-  const history = useHistory()
+  const history = useNavigate()
   useEffect(() => {
     model.loadTags()
   }, [])
@@ -32,7 +32,7 @@ const TagsPage = ({}: TagsPagePropsType): ReactElement => {
                 key={tag.id}
                 className={classes.tag}
                 icon={<Bookmark />}
-                onClick={() => history.push(`/tag/${tag.id}`)}
+                onClick={() => history(`/tag/${tag.id}`)}
               />
             )
           })

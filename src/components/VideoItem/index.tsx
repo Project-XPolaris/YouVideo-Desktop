@@ -1,8 +1,8 @@
 import React from 'react'
 import useStyles from './style'
-import { Videocam } from '@material-ui/icons'
+import { Videocam } from '@mui/icons-material'
 import clsx from 'clsx'
-import { ButtonBase } from '@material-ui/core'
+import { ButtonBase } from '@mui/material'
 
 export interface VideoItemPropsType {
   className?: any

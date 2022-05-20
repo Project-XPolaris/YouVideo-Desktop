@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 
-const useStyles = makeStyles((theme) => ({
-  root: {},
+const useStyles = makeStyles(() => ({
+  root: {}
 }))
 export default useStyles

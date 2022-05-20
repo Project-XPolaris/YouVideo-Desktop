@@ -8,11 +8,11 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
-} from '@material-ui/core'
+} from '@mui/material'
 import useStyles from './style'
 import { useDebounce } from 'ahooks'
 import { fetchTags, Tag } from '../../api/tag'
-import { Bookmark } from '@material-ui/icons'
+import { Bookmark } from '@mui/icons-material'
 
 export interface AddTagDialogPropsType {
   open?: boolean
@@ -53,7 +53,7 @@ const AddTagDialog = ({ onOk, onCancel, open = false }: AddTagDialogPropsType):R
           className={classes.input}
           multiple
           freeSolo
-          onInputChange={(e, text, r) => setInput(text)}
+          onInputChange={(e, text, _) => setInput(text)}
           renderInput={(params) => (
             <TextField
               {...params}

@@ -1,6 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
+import appTheme from '../../theme'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: '100vw',
     display: 'flex'
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     top: 0,
     zIndex: 1,
-    padding: theme.spacing(2),
+    padding: appTheme.spacing(2),
     backgroundColor: '#2b2b2b'
   },
   title: {
@@ -27,19 +28,19 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 200
   },
   item: {
-    marginRight: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-    width: theme.spacing(20)
+    marginRight: appTheme.spacing(2),
+    marginBottom: appTheme.spacing(2),
+    width: appTheme.spacing(20)
   },
   list: {
     display: 'flex',
     flexWrap: 'wrap',
-    marginTop: theme.spacing(2),
-    padding: theme.spacing(2)
+    marginTop: appTheme.spacing(2),
+    padding: appTheme.spacing(2)
   },
   pagination: {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(4)
+    marginTop: appTheme.spacing(4),
+    marginBottom: appTheme.spacing(4)
   }
 }))
 export default useStyles

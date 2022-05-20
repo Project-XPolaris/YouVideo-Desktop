@@ -1,6 +1,7 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { createStyles, makeStyles } from '@mui/styles'
+import appTheme from '../../theme'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
     },
@@ -8,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
     },
     input: {
-      marginBottom: theme.spacing(2)
+      marginBottom: appTheme.spacing(2)
     }
   })
 )

@@ -1,6 +1,7 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { createStyles, makeStyles } from '@mui/styles'
+import appTheme from '../../theme'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       '& .MuiDialogContent-root': {
@@ -9,16 +10,16 @@ const useStyles = makeStyles((theme: Theme) =>
 
     },
     button: {
-      color: theme.palette.primary.contrastText
+      color: appTheme.palette.primary.contrastText
     },
     header: {
       backgroundColor: '#2a2a2a',
-      padding: theme.spacing(2)
+      padding: appTheme.spacing(2)
     },
     field: {
-      paddingBottom: theme.spacing(1),
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2)
+      paddingBottom: appTheme.spacing(1),
+      paddingLeft: appTheme.spacing(2),
+      paddingRight: appTheme.spacing(2)
     },
     pathHeader: {
       display: 'flex',
@@ -26,15 +27,15 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     pathInput: {
       flex: 1,
-      marginRight: theme.spacing(2),
-      width: theme.spacing(40)
+      marginRight: appTheme.spacing(2),
+      width: appTheme.spacing(40)
     },
     backIcon: {
-      marginRight: theme.spacing(2)
+      marginRight: appTheme.spacing(2)
     },
     itemContainer: {
-      width: theme.spacing(60),
-      height: theme.spacing(40),
+      width: appTheme.spacing(60),
+      height: appTheme.spacing(40),
       overflowX: 'hidden',
       overflowY: 'auto'
     },

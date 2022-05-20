@@ -1,26 +1,26 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
 import useStyles from './style'
 import useLayoutModel from '../../models/layout'
-import { ArrowBack } from '@material-ui/icons'
-import MinimizeSharpIcon from '@material-ui/icons/MinimizeSharp'
-import CheckBoxOutlineBlankSharpIcon from '@material-ui/icons/CheckBoxOutlineBlankSharp'
-import ClearSharpIcon from '@material-ui/icons/ClearSharp'
+import { ArrowBack } from '@mui/icons-material'
+import MinimizeSharpIcon from '@mui/icons-material/MinimizeSharp'
+import CheckBoxOutlineBlankSharpIcon from '@mui/icons-material/CheckBoxOutlineBlankSharp'
+import ClearSharpIcon from '@mui/icons-material/ClearSharp'
 import React from 'react'
-import { TaskManager } from '../../parts/Task'
-import { useHistory } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { ApplicationConfig } from '../../config'
 import { ipcRenderer } from 'electron'
 
 const BaseLayout = ({ children }:{children:any}): React.ReactElement => {
   const classes = useStyles()
   const layoutModel = useLayoutModel()
-  const routerHistory = useHistory()
+  const routerHistory = useNavigate()
+  const location = useLocation()
   // init
-  if (routerHistory.location.pathname !== '/start') {
+  if (location.pathname !== '/start') {
     const apiUrl = localStorage.getItem(ApplicationConfig.storeKey.apiUrl)
     if (apiUrl === null) {
-      routerHistory.push('/start')
+      routerHistory('/start')
     }
   }
   const NavIcon = () => {

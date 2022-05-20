@@ -1,12 +1,13 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
+import appTheme from '../../theme'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1
   },
   menuButton: {
-    marginRight: theme.spacing(2),
-    marginLeft: theme.spacing(2)
+    marginRight: appTheme.spacing(2),
+    marginLeft: appTheme.spacing(2)
   },
   title: {
     flexGrow: 1,
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   main: {
     backgroundColor: '#181818',
     height: '100vh',
-    paddingTop: theme.spacing(6),
+    paddingTop: appTheme.spacing(6),
     display: 'flex',
     width: '100vw'
   },
@@ -30,11 +31,11 @@ const useStyles = makeStyles((theme) => ({
     padding: 0
   },
   windowAction: {
-    color: theme.palette.primary.contrastText,
-    marginRight: theme.spacing(1)
+    color: appTheme.palette.primary.contrastText,
+    marginRight: appTheme.spacing(1)
   },
   actionIcon: {
-    fontSize: theme.spacing(2)
+    fontSize: appTheme.spacing(2)
   },
   '@global': {
     '*::-webkit-scrollbar': {

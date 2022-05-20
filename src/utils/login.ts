@@ -4,7 +4,7 @@ export interface LoginHistory {
   token:string
 }
 
-class LoginHistoryManager {
+export class LoginHistoryManager {
   list:LoginHistory[]
   constructor () {
     this.list = []

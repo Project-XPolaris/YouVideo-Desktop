@@ -1,13 +1,14 @@
 import React from 'react'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import HomeIcon from '@material-ui/icons/Home'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import HomeIcon from '@mui/icons-material/Home'
 import useStyles from './style'
 import useLayoutModel, { TabIndex } from '../../models/layout'
-import { useHistory } from 'react-router-dom'
-import { Bookmarks, Folder, Settings, Videocam } from '@material-ui/icons'
+import { useNavigate } from 'react-router-dom'
+import { Bookmarks, Folder, Settings, Videocam } from '@mui/icons-material'
+import { ListItemButton } from '@mui/material'
 
 const NavItems: {
   icon: React.ReactElement, title: string, index: TabIndex, path: string
@@ -46,27 +47,24 @@ const NavItems: {
 const Nav = () => {
   const classes = useStyles()
   const layoutModel = useLayoutModel()
-  const history = useHistory()
-  console.log(history.location.pathname)
+  const history = useNavigate()
   return (
     <div className={classes.root}>
       <List component='nav'>
         {NavItems.map((item) => (
-          <ListItem
+          <ListItemButton
             key={item.index}
-            button
             selected={layoutModel.activeIndex === item.index}
             onClick={() => {
               layoutModel.setActiveIndex(item.index)
-              history.push(item.path)
-              console.log(item)
+              history(item.path)
             }}
           >
             <ListItemIcon>
               {item.icon}
             </ListItemIcon>
             <ListItemText primary={item.title} />
-          </ListItem>
+          </ListItemButton>
         ))}
       </List>
     </div>

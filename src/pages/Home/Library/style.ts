@@ -1,19 +1,20 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { createStyles, makeStyles } from '@mui/styles'
+import appTheme from '../../../theme'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
 
       position: 'relative'
     },
     header: {
-      padding: theme.spacing(2),
+      padding: appTheme.spacing(2),
       display: 'flex',
       flexDirection: 'row',
       position: 'sticky',
       width: '100%',
       top: 0,
-      marginTop: theme.spacing(8),
+      marginTop: appTheme.spacing(8),
       backgroundColor: '#181818',
       zIndex: 1
     },
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
     list: {
     },
     content: {
-      padding: theme.spacing(2)
+      padding: appTheme.spacing(2)
     }
   })
 )

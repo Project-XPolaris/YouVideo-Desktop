@@ -17,7 +17,9 @@ const VideoDetailPage = ({}: VideoDetailPagePropsType) => {
   const layoutModel = useLayoutModel()
   const videoModel = useVideoDetailModel()
   useEffect(() => {
-    videoModel.setVideoId(id)
+    if (id) {
+      videoModel.setVideoId(Number(id))
+    }
   }, [])
   return (
     <div className={classes.root}>

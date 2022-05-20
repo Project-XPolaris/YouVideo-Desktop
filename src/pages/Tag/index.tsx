@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect } from 'react'
-import { Pagination } from '@material-ui/core'
+import { Pagination } from '@mui/material'
 import useStyles from './style'
-import { useHistory, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import useTagDetailModel from './model'
 import TagDetailSide from './side'
 import { VideoFile } from '../../api/video'
@@ -17,7 +17,7 @@ const TagPage = ({}: TagPagePropsType): ReactElement => {
   const { id } = useParams()
   const classes = useStyles()
   const tagModel = useTagDetailModel()
-  const history = useHistory()
+  const history = useNavigate()
   useEffect(() => {
     tagModel.setTagId(Number(id))
     tagModel.loadVideo({})
@@ -40,7 +40,7 @@ const TagPage = ({}: TagPagePropsType): ReactElement => {
                   className={classes.item}
                   title={video.name}
                   coverUrl={getImageUrl(file?.cover)}
-                  onClick={() => history.push(`/video/${video.id}`)}
+                  onClick={() => history(`/video/${video.id}`)}
                   coverHeight={96}
                 />
               )

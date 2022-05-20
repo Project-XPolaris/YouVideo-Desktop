@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
-import { List, ListItem, ListItemAvatar, ListItemText, Typography } from '@material-ui/core'
+import { List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material'
 import useStyles from './style'
-import { Language } from '@material-ui/icons'
+import { Language } from '@mui/icons-material'
 import { ApplicationConfig } from '../../../config'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export interface SettingPagePropsType {
 
@@ -11,10 +11,10 @@ export interface SettingPagePropsType {
 
 const SettingPage = ({}: SettingPagePropsType): ReactElement => {
   const classes = useStyles()
-  const history = useHistory()
+  const history = useNavigate()
   const logout = () => {
     localStorage.removeItem(ApplicationConfig.storeKey.apiUrl)
-    history.push('/start')
+    history('/start')
   }
   return (
     <div>

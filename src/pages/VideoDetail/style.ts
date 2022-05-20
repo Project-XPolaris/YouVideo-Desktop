@@ -1,6 +1,7 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { createStyles, makeStyles } from '@mui/styles'
+import appTheme from '../../theme'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       width: '100vw',
@@ -11,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: '#2b2b2b',
       display: 'flex',
       justifyContent: 'center',
-      padding: theme.spacing(4),
+      padding: appTheme.spacing(4),
       overflowX: 'hidden',
       overflowY: 'auto'
     }

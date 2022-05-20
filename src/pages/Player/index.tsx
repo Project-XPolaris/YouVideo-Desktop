@@ -1,18 +1,19 @@
 import React, { ReactElement, useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useQuery } from '../../hooks/query'
 import useStyles from './style'
 import { useLocalStorageState, useSize } from 'ahooks'
-import { ArrowBack, Pause, PlayArrow, VolumeDown, VolumeUp } from '@material-ui/icons'
-import { IconButton, Slider, withStyles } from '@material-ui/core'
-import { red } from '@material-ui/core/colors'
+import { ArrowBack, Pause, PlayArrow, VolumeDown, VolumeUp } from '@mui/icons-material'
+import { IconButton, Slider } from '@mui/material'
+import { red } from '@mui/material/colors'
 import { formatPlayTime } from '../../utils/time'
+import { styled } from '@mui/styles'
 
 export interface PlayerPagePropsType {
 
 }
-const PlaySlider = withStyles({
+const PlaySlider = styled(Slider)({
   root: {
     color: red[500],
     '&:hover .MuiSlider-thumb': {
@@ -33,12 +34,12 @@ const PlaySlider = withStyles({
   rail: {
     color: '#777777'
   }
-})(Slider)
+})
 
 const PlayerPage = ({}: PlayerPagePropsType): ReactElement => {
   const classes = useStyles()
   const query = useQuery()
-  const history = useHistory()
+  const history = useNavigate()
   const ref : any = useRef()
   const size = useSize(ref)
   const [isPlay, setIsPlay] = useState<boolean>(true)
@@ -80,7 +81,7 @@ const PlayerPage = ({}: PlayerPagePropsType): ReactElement => {
 
       />
       <div className={classes.control}>
-        <IconButton onClick={() => history.goBack()}>
+        <IconButton onClick={() => history(-1)}>
           <ArrowBack />
         </IconButton>
         <IconButton onClick={() => setIsPlay(!isPlay)}>

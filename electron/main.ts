@@ -1,10 +1,12 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
 import * as path from 'path'
 import * as url from 'url'
+import './youauth'
+import { runExpress } from './express'
 if (process.platform === 'darwin') {
   app.dock.setIcon(path.join(__dirname, 'assets/icon.png'))
 }
-let mainWindow: Electron.BrowserWindow | null
+export let mainWindow: Electron.BrowserWindow | null
 
 function createWindow () {
   mainWindow = new BrowserWindow({
@@ -21,14 +23,13 @@ function createWindow () {
   })
 
   if (process.env.NODE_ENV === 'development') {
-    mainWindow.loadURL('http://localhost:4000/#home')
+    mainWindow.loadURL('http://localhost:5801')
   } else {
     mainWindow.loadURL(
       url.format({
         pathname: path.join(__dirname, 'renderer/index.html'),
         protocol: 'file:',
-        slashes: true,
-        hash: 'home'
+        slashes: true
       })
     )
   }
@@ -60,6 +61,7 @@ ipcMain.on('min', () => {
 app.on('ready', createWindow)
   .whenReady()
   .then(() => {
+    runExpress()
     // if (process.env.NODE_ENV === 'development') {
     //   installExtension(REACT_DEVELOPER_TOOLS)
     //     .then((name) => console.log(`Added Extension:  ${name}`))

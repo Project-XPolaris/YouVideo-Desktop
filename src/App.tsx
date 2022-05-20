@@ -2,9 +2,10 @@ import React from 'react'
 import { render } from 'react-dom'
 import { GlobalStyle } from './styles/GlobalStyle'
 import appTheme from './theme'
-import { ThemeProvider } from '@material-ui/core'
+import { ThemeProvider } from '@mui/material'
 import { useTitle } from 'ahooks'
 import BlankLayout from './layout/BlankLayout'
+import { SnackbarProvider } from 'notistack'
 
 const mainElement = document.createElement('div')
 mainElement.setAttribute('id', 'root')
@@ -15,8 +16,10 @@ const App = () => {
   return (
     <>
       <ThemeProvider theme={appTheme}>
-        <GlobalStyle />
-        <BlankLayout />
+        <SnackbarProvider maxSnack={3}>
+          <GlobalStyle />
+          <BlankLayout />
+        </SnackbarProvider>
       </ThemeProvider>
     </>
   )

@@ -1,6 +1,7 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { createStyles, makeStyles } from '@mui/styles'
+import appTheme from '../../theme'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       width: '100%'
@@ -11,18 +12,18 @@ const useStyles = makeStyles((theme: Theme) =>
       overflowX: 'auto'
     },
     item: {
-      marginRight: theme.spacing(2),
-      marginBottom: theme.spacing(2),
-      width: theme.spacing(30)
+      marginRight: appTheme.spacing(2),
+      marginBottom: appTheme.spacing(2),
+      width: appTheme.spacing(30)
     },
     header: {
       display: 'flex',
-      marginBottom: theme.spacing(2)
+      marginBottom: appTheme.spacing(2)
     },
     title: {
-      ...theme.typography.h5,
+      ...appTheme.typography.h5,
       fontWeight: 300,
-      color: theme.palette.primary.contrastText,
+      color: appTheme.palette.primary.contrastText,
       flexGrow: 1
     },
     '@global': {

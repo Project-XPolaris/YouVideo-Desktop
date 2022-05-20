@@ -1,15 +1,15 @@
 import React, { ReactElement } from 'react'
 import {
-  Avatar, ButtonBase,
+  Avatar,
+  ButtonBase,
   IconButton,
   ListItem,
   ListItemAvatar,
   ListItemSecondaryAction,
   ListItemText,
-  Menu,
-  MenuItem
-} from '@material-ui/core'
-import { MoreVert, PlayArrow } from '@material-ui/icons'
+  Menu
+} from '@mui/material'
+import { MoreVert, PlayArrow } from '@mui/icons-material'
 import { VideoFile } from '../../api/video'
 
 export interface VideoFileItemPropsType {

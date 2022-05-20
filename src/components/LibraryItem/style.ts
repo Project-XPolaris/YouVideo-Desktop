@@ -1,6 +1,7 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { createStyles, makeStyles } from '@mui/styles'
+import appTheme from '../../theme'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
 
@@ -9,15 +10,15 @@ const useStyles = makeStyles((theme: Theme) =>
       color: 'white'
     },
     icon: {
-      color: theme.palette.primary.main
+      color: appTheme.palette.primary.main
     },
     progress: {
-      width: theme.spacing(20)
+      width: appTheme.spacing(20)
     },
     progressHint: {
-      ...theme.typography.caption,
+      ...appTheme.typography.caption,
       color: 'white',
-      marginBottom: theme.spacing(1)
+      marginBottom: appTheme.spacing(1)
     }
   })
 )

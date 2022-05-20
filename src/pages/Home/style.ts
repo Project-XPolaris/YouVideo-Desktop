@@ -1,23 +1,24 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
+import appTheme from '../../theme'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     minWidth: '100%',
     minHeight: '100%',
     display: 'flex',
-    padding: theme.spacing(2),
+    padding: appTheme.spacing(2),
     flexDirection: 'column'
   },
   collection: {
-    color: theme.palette.primary.contrastText,
-    marginBottom: theme.spacing(4)
+    color: appTheme.palette.primary.contrastText,
+    marginBottom: appTheme.spacing(4)
   },
   title: {
-    ...theme.typography.h3,
-    color: theme.palette.primary.contrastText
+    ...appTheme.typography.h3,
+    color: appTheme.palette.primary.contrastText
   },
   collectionItem: {
-    marginTop: theme.spacing(4)
+    marginTop: appTheme.spacing(4)
   }
 }))
 export default useStyles

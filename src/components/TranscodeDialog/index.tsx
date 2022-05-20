@@ -1,7 +1,6 @@
-import React, { ReactElement, useEffect, useState } from 'react'
-import { Autocomplete, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@material-ui/core'
+import React, { ReactElement, useState } from 'react'
+import { Autocomplete, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material'
 import useStyles from './style'
-import { useDebounce } from 'ahooks'
 import { Codec, fetchCodecList, fetchFormatList, Formats } from '../../api/trans'
 import { useAutoSearch } from './hook'
 

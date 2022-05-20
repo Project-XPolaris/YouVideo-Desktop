@@ -12,8 +12,8 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText
-} from '@material-ui/core'
-import { ArrowBack, Description, Folder } from '@material-ui/icons'
+} from '@mui/material'
+import { ArrowBack, Description, Folder } from '@mui/icons-material'
 import { fetchDirectoryContent, FileItem } from '../../api/file'
 
 export interface PathSelectDialogPropsType {

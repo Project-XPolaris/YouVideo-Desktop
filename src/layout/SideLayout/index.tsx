@@ -1,6 +1,6 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import theme from '../../theme'
+import { makeStyles } from '@mui/styles'
+import appTheme from '../../theme'
 
 const useStyles = makeStyles({
   main: {
@@ -12,8 +12,8 @@ const useStyles = makeStyles({
   side: {
     width: 240,
     height: '100%',
-    color: theme.palette.primary.contrastText,
-    backgroundColor: theme.palette.background.default,
+    color: appTheme.palette.primary.contrastText,
+    backgroundColor: appTheme.palette.background.default,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
@@ -21,10 +21,10 @@ const useStyles = makeStyles({
   content: {
     width: 'calc(100vw - 240px)',
     height: '100%',
-    padding: theme.spacing(4),
+    padding: appTheme.spacing(4),
     overflowX: 'hidden',
     overflowY: 'scroll',
-    paddingBottom: theme.spacing(20)
+    paddingBottom: appTheme.spacing(20)
   },
   '@global': {
     '*::-webkit-scrollbar': {

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { Pagination, Typography } from '@material-ui/core'
+import { Pagination, Typography } from '@mui/material'
 import useStyles from './style'
 import VideoItem from '../../../components/VideoItem'
 import useHomeVideoListModel from './model'
 import { getImageUrl } from '../../../utils/image'
 import { VideoFile } from '../../../api/video'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export interface HomeVideosPagePropsType {
 
@@ -13,7 +13,7 @@ export interface HomeVideosPagePropsType {
 
 const HomeVideosPage = ({}: HomeVideosPagePropsType): React.ReactElement => {
   const classes = useStyles()
-  const history = useHistory()
+  const history = useNavigate()
   const model = useHomeVideoListModel()
   useEffect(() => {
     model.loadVideo({})
@@ -39,7 +39,7 @@ const HomeVideosPage = ({}: HomeVideosPagePropsType): React.ReactElement => {
                     className={classes.item}
                     title={video.name}
                     coverUrl={getImageUrl(file?.cover)}
-                    onClick={() => history.push(`/video/${video.id}`)}
+                    onClick={() => history(`/video/${video.id}`)}
                     coverHeight={96}
                   />
                 )

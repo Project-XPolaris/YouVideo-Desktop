@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import clsx from 'clsx'
 import useStyles from './style'
-import { Paper, Typography } from '@material-ui/core'
+import { Paper, Typography } from '@mui/material'
 
 export interface DetailLayoutPropsType {
   children?:any

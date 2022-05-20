@@ -14,10 +14,9 @@ import {
   Typography
 } from '@mui/material'
 import { Cloud, Person } from '@mui/icons-material'
-import { ApplicationConfig } from '../../config'
 import { useNavigate } from 'react-router-dom'
-import { fetchServiceInfo, ServiceInfo } from '../../api/info'
-import { LoginHistory, loginHistoryManager } from '../../utils/login'
+import { ServiceInfo } from '../../api/info'
+import { LoginHistory, LoginHistoryManager } from '../../utils/login'
 import { useUpdate } from 'ahooks'
 import { ipcRenderer } from 'electron'
 import request from 'umi-request'
@@ -25,12 +24,15 @@ import clsx from 'clsx'
 import { useSnackbar } from 'notistack'
 import SelectLoginView from '../../components/SelectLoginView'
 import { oauthAuth } from '../../api/auth'
+import { ApplicationConfig } from '../../config'
 
 export interface StartPagePropsType {
-
+  getServiceInfo: () => Promise<ServiceInfo>
+  loginHistoryManager: LoginHistoryManager
+  apiUrlStoreKey: string
 }
 
-const StartPage = () : ReactElement => {
+const StartPage = ({ getServiceInfo,loginHistoryManager }:StartPagePropsType) : ReactElement => {
   const classes = useStyles()
   const history = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
@@ -81,7 +83,7 @@ const StartPage = () : ReactElement => {
       return
     }
     localStorage.setItem(ApplicationConfig.storeKey.apiUrl, url)
-    const infoResponse = await fetchServiceInfo()
+    const infoResponse = await getServiceInfo()
     enqueueSnackbar('connect to service success', { variant: 'success' })
     setServiceInfo(infoResponse)
   }

@@ -44,7 +44,7 @@ const VideoDetailModel = () => {
     refresh()
   }, [videoId])
   return {
-    video, tags, videoId, setVideoId, addTags, removeTag,transcode
+    video, tags, videoId, setVideoId, addTags, removeTag, transcode
   }
 }
 const useVideoDetailModel = createModel(VideoDetailModel)
