@@ -1,0 +1,61 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Create electron release
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [windows-2019, macos-10.15]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: npm install
+      run: |
+          npm install
+    - name: build dist
+      run: npm run build
+    #step4: build app for mac/win
+    - name: build windows app
+      if: matrix.os == 'windows-2019'
+      run: |
+        npm run electron:build
+
+    - name: build mac app
+      if: matrix.os == 'macos-10.15'
+      run: |
+        npm run electron:build
+    # step5: cleanup artifacts in dist_electron
+    - name: cleanup artifacts
+      run: |
+        npx rimraf "packages/!(*.exe|*.dmg)"
+    # step6: upload artifacts
+    - name: upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.os }}
+        path: packages
+    # step7: create release
+    - name: release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: "dist_electron/**"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    
