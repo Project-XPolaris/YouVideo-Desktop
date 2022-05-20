@@ -29,17 +29,6 @@ jobs:
           yarn install
     - name: build dist
       run: yarn run build
-    #step4: build app for mac/win
-    - name: build windows app
-      if: matrix.os == 'windows-2019'
-      run: |
-        electron-builder build
-
-    - name: build mac app
-      if: matrix.os == 'macos-10.15'
-      run: |
-        electron-builder build
-    # step5: cleanup artifacts in dist_electron
     - name: Build/release Electron app
       uses: samuelmeuli/action-electron-builder@v1
       with:
