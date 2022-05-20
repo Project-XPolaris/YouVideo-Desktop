@@ -23,22 +23,22 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        cache: 'yarn'
     - name: npm install
       run: |
-          npm install
+          yarn install
     - name: build dist
-      run: npm run build
+      run: yarn run build
     #step4: build app for mac/win
     - name: build windows app
       if: matrix.os == 'windows-2019'
       run: |
-        npm run electron:build
+        electron-builder build
 
     - name: build mac app
       if: matrix.os == 'macos-10.15'
       run: |
-        npm run electron:build
+        electron-builder build
     # step5: cleanup artifacts in dist_electron
     - name: cleanup artifacts
       run: |
